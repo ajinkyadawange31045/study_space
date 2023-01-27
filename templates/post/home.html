@@ -1,0 +1,165 @@
+{% extends "base/base.html" %}{% block title %}Home page {% endblock %}
+{% block content %}{% load static %}
+
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading">Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.</div>
+        <div class="masthead-heading text-uppercase">Study space</div>
+        <a class="btn btn-primary btn-xl text-uppercase" href="#portfolio">Branches</a>
+    </div>
+</header>
+<!-- Services-->
+<section class="page-section" id="services">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Services</h2>
+            <h3 class="section-subheading text-muted">These is our humble attemt to serve you.</h3>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <!-- <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i> -->
+                        <!-- <i class="fa-face-sunglasses fa-stack-1x fa-inverse"></i> -->
+                        <i class="fa-solid fa-face-smile fa-stack-1x fa-inverse"></i>
+                    </span>
+                <h4 class="my-3">Who are we?</h4>
+                <p class="text-muted">We are the group of friends in NITK frustrated of making notes or asking notes from others at the last moments</p>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <!-- <i class="fas fa-laptop fa-stack-1x fa-inverse"></i> -->
+                        <!-- <i class="fa-solid fa-face-saluting fa-stack-1x fa-inverse"></i> -->
+                        <i class="fa-solid fa-pen-to-square fa-stack-1x fa-inverse"></i>
+                    </span>
+                <h4 class="my-3">What Study Space do?</h4>
+                <p class="text-muted">Study Space provides notes of toppers from respective branches, previous year papers and the best solution for students who study the night before the exam.</p>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                        <!-- <i class="fas fa-lock fa-stack-1x fa-inverse"></i> -->
+                        <i class="fa-solid fa-person-chalkboard fa-stack-1x fa-inverse"></i>
+                    </span>
+                <h4 class="my-3">What is Teachers Rating?</h4>
+                <p class="text-muted">Why only teachers should rate students on his performance. This platform will rate teachers also</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Portfolio Grid-->
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Branches</h2>
+            <h3 class="section-subheading text-muted">We provide our service to following branches of NITK</h3>
+        </div>
+        <div class="row">
+
+            {% for b in branch %}
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 1-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link" data-bs-toggle="modal" href="{{p.url}}">
+                       
+                        <!-- <img class="img-fluid" src="{% static 'assets/img/portfolio/1.jpg' %}" alt="..." /> -->
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">{{b.name}}</div>
+                        <div class="portfolio-caption-subheading text-muted">{{b.content}}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 2-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                        
+                        <!-- <img class="img-fluid" src="{% static 'assets/img/portfolio/2.jpg' %}" alt="..." /> -->
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Artificial Intelligence</div>
+                        <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- Contact-->
+<section class="page-section" id="contact">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Contact Us</h2>
+            <h3 class="section-subheading text-muted">Please suggest us how we can improve and also if you want to contribute to this website, you can share notes of your class toppers with me</h3>
+        </div>
+        <!-- * * * * * * * * * * * * * * *-->
+        <!-- * * SB Forms Contact Form * *-->
+        <!-- * * * * * * * * * * * * * * *-->
+        <!-- This form is pre-integrated with SB Forms.-->
+        <!-- To make this form functional, sign up at-->
+        <!-- https://startbootstrap.com/solution/contact-forms-->
+        <!-- to get an API token!-->
+        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+            <div class="row align-items-stretch mb-5">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <!-- Name input-->
+                        <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
+                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                    </div>
+                    <div class="form-group">
+                        <!-- Email address input-->
+                        <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
+                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                    </div>
+                    <div class="form-group mb-md-0">
+                        <!-- Phone number input-->
+                        <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
+                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group form-group-textarea mb-md-0">
+                        <!-- Message input-->
+                        <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
+                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Submit success message-->
+            <!---->
+            <!-- This is what your users will see when the form-->
+            <!-- has successfully submitted-->
+            <div class="d-none" id="submitSuccessMessage">
+                <div class="text-center text-white mb-3">
+                    <div class="fw-bolder">Form submission successful!</div>
+                    To activate this form, sign up at
+                    <br />
+                    
+                </div>
+            </div>
+            <!-- Submit error message-->
+            <!---->
+            <!-- This is what your users will see when there is-->
+            <!-- an error submitting the form-->
+            <div class="d-none" id="submitErrorMessage">
+                <div class="text-center text-danger mb-3">Error sending message!</div>
+            </div>
+            <!-- Submit Button-->
+            <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button></div>
+        </form>
+    </div>
+</section>
+
+
+
+{% endblock %}

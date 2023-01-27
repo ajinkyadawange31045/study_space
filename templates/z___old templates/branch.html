@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}{% block content %}
+  <div class="container">
+    <h1 class="text-center my-5">Branch View</h1>
+    <div class="row">
+      <div class="col-md-3">
+        <h2>{{ branch.name }}</h2>
+        <p>{{ branch.college }}</p>
+      </div>
+      <div class="col-md-9">
+        <h2 class="my-3">Semesters</h2>
+        <ul>
+          {% for semester in branch.semester_set.all %}
+            <li>
+              <a href="{% url 'semester_view' semester.id %}">{{ semester.name }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  {% endblock %}

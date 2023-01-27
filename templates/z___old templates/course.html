@@ -11,6 +11,15 @@
 </head>
 
 <body>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{ course.title }}</h5>
+          <p class="card-text">{{ course.semester.name }}</p>
+          <a href="{% url 'instructor_view' course.instructor.id %}" class="btn btn-primary">See instructor</a>
+        </div>
+      </div>
+      
     <div class="container pt-5">
 
         <button class="btn btn-primary m-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" data-bs-target-group="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
