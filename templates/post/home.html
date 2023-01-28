@@ -6,7 +6,7 @@
     <div class="container">
         <div class="masthead-subheading">Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.</div>
         <div class="masthead-heading text-uppercase">Study space</div>
-        <a class="btn btn-primary btn-xl text-uppercase" href="#portfolio">Branches</a>
+        <a class="btn btn-primary btn-xl text-uppercase" href="#branches">Branches</a>
     </div>
 </header>
 <!-- Services-->
@@ -50,7 +50,7 @@
     </div>
 </section>
 <!-- Portfolio Grid-->
-<section class="page-section bg-light" id="portfolio">
+<section class="page-section bg-light" id="branches">
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Branches</h2>
@@ -62,14 +62,16 @@
             <div class="col-lg-4 col-sm-6 mb-4">
                 <!-- Portfolio item 1-->
                 <div class="portfolio-item">
-                    <a class="portfolio-link" data-bs-toggle="modal" href="{{p.url}}">
+                    <a class="portfolio-link" data-bs-toggle="modal" href="{% url 'branch_view' b.id %}">
+
                        
                         <!-- <img class="img-fluid" src="{% static 'assets/img/portfolio/1.jpg' %}" alt="..." /> -->
-                    </a>
+                    
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">{{b.name}}</div>
                         <div class="portfolio-caption-subheading text-muted">{{b.content}}</div>
                     </div>
+                </a>
                 </div>
             </div>
             {% endfor %}
