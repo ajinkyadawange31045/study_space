@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'memes',
     'post',
     'taggit',
+    'teacher_rating',
 ]
 
 MIDDLEWARE = [

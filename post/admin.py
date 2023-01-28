@@ -20,8 +20,8 @@ admin.site.register(Course,CourseAdmin)
 
 
 class InstructorAdmin(admin.ModelAdmin):
-    list_display = ('name', 'course_taken_in_year','about','reviews')
-admin.site.register(Instructor)
+    list_display = ('name', 'course_taken_in_year','about','reviews','content')
+admin.site.register(Instructor,InstructorAdmin)
 
 
 
