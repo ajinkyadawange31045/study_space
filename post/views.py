@@ -1,6 +1,6 @@
 # views.py
 from django.shortcuts import render, get_object_or_404
-from .models import Branch, Semester, Course, Instructor,PostForImage
+from .models import Branch, Semester, Course, Instructor,Instructor_post_pdf,Instructor_post_text
 from django.urls import reverse
 
 def home(request):
@@ -68,7 +68,7 @@ def course_view(request, course_id):
 #     return render(request, 'post/instructor.html', context)
 
 # def post_view(request, post_id):
-#     post = get_object_or_404(PostForImage, id=post_id)
+#     post = get_object_or_404(Instructor_post_pdf,Instructor_post_text, id=post_id)
 #     context = {'post': post}
 #     return render(request, 'post/post.html', context)
 

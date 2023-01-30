@@ -47,9 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'regi',
     'memes',
+    'various_categories',
     'post',
     'taggit',
     'teacher_rating',
+    'embed_video',
 ]
 
 MIDDLEWARE = [
