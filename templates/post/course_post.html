@@ -3,6 +3,13 @@
 <div class="container">
     <h2 class="mt-5 text-center justify-content-center">{{course.title}}</h2><br>
     
+    <section class="py-2">
+        <div class="container">
+            <!-- embed things -->
+        </div>
+    </section>
+
+
     <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -24,7 +31,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="./semester.html">Purchase now</a></div>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'instructor_view' instructor_id=instructor.id  %}">Visit</a></div>
                     </div>
                 </div>
             </div>
