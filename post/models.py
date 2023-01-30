@@ -14,6 +14,7 @@ from django.db import models
 class Branch(models.Model):
     # college = models.ForeignKey(College, on_delete=models.CASCADE)
     name = models.CharField( blank=True, max_length=255)
+    url = models.CharField(max_length=100)
     content = models.TextField(blank=True)
     
     def __str__(self):
@@ -22,6 +23,7 @@ class Branch(models.Model):
 class Semester(models.Model):
     branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
     name = models.CharField( blank=True, max_length=255)
+    url = models.CharField(max_length=100)
     number = models.IntegerField()
     description = models.TextField(blank=True)
     
@@ -31,6 +33,7 @@ class Semester(models.Model):
 class Course(models.Model):
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
     title = models.CharField( blank=True, max_length=255)
+    url = models.CharField(max_length=100)
     views = models.IntegerField()
     def __str__(self):
         return self.title
@@ -47,6 +50,7 @@ class Course_post(models.Model):
 class Instructor(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     name = models.CharField( blank=True, max_length=255)
+    url = models.CharField(max_length=100)
     course_taken_in_year = models.IntegerField()
     about = models.TextField(blank=True)
     reviews = models.TextField(blank=True)
@@ -57,7 +61,8 @@ class Instructor(models.Model):
 
 class Instructor_post_pdf(models.Model):
     instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE)
-    title = models.ImageField(blank=True)
+    title = models.CharField(blank=True, max_length=644)
+    url = models.CharField(max_length=100)
     content = models.TextField(blank=True)
     pdf_link = models.CharField(max_length=1000,blank=True)
     def __str__(self):
@@ -67,6 +72,7 @@ class Instructor_post_pdf(models.Model):
 class Instructor_post_text(models.Model):
     instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE)
     title = models.CharField( blank=True, max_length=255)
+    url = models.CharField(max_length=100)
     image = models.ImageField(blank=True)
     content = models.TextField(blank=True)
     

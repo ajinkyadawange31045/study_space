@@ -10,30 +10,37 @@ def home(request):
     context = {'branch':branch}
     return render(request,'post/home.html',context) 
 
-def branch_view(request, branch_id):
-    branch = Branch.objects.get(id=branch_id)
+def semester(request, url):
+    branch = Branch.objects.get(url=url)
     semesters = Semester.objects.filter(branch=branch)
     context = {
         'branch': branch,
         'semesters': semesters
     }
-    return render(request, 'post/branch.html', context)
+    return render(request, 'post/semester.html', context)
 
 
-def course_view(request, course_id):
-    course = get_object_or_404(Course, id=course_id)
+def course(request, url):
+    course = get_object_or_404(Course, url=url)
     post_thing =Instructor.objects.filter(course=course)
     course_post = Course_post.objects.filter(course=course)
     context = {'course': course,'inc':post_thing,'course_post':course_post}
-    return render(request, 'post/course_post.html',context)
+    return render(request, 'post/course.html',context)
 
-def instructor_view(request, instructor_id):
-    instructor = get_object_or_404(Instructor, id=instructor_id)
-    context = {'instructor': instructor}
+def instructor(request, url):
+    instructor = get_object_or_404(Instructor, url=url)
+    instructor_post_pdf = Instructor_post_pdf.objects.all().filter(instructor=instructor)
+    instructor_post_text = Instructor_post_text.objects.all().filter(instructor=instructor)
+    context = {'instructor': instructor,'instructor_post_pdf':instructor_post_pdf,'instructor_post_text':instructor_post_text}
     return render(request, 'post/instructor.html', context)
 
-# def post_view(request, post_id):
-#     post = get_object_or_404(Instructor_post_pdf,Instructor_post_text, id=post_id)
-#     context = {'post': post}
-#     return render(request, 'post/post.html', context)
+def instructor_post_pdf(request, url):
+    instructor_post_pdf = get_object_or_404(Instructor_post_pdf, url=url)
+    context = {'instructor_post_pdf': instructor_post_pdf}
+    return render(request, 'post/instructor_post_pdf.html', context)
+
+def instructor_post_text(request, url):
+    instructor_post_text = get_object_or_404(Instructor_post_text, url=url)
+    context = {'instructor_post_text': instructor_post_text}
+    return render(request, 'post/instructor_post_text.html', context)
 
