@@ -1,46 +1,106 @@
 {% extends "base/base.html" %}{% block content %}
-<style>
-    .ard {
-        background-color: black;
-        height: 55vh;
-        width: 100vw;
-        margin-bottom: 14px;
-    }
-  </style>
-  
-  <div class="home ard">
-    <div class="home_content">
-        <div class="post_title">Instructor : {{instructor.name}}</div>
-        
+<section class="container mb-2 text-center" style="margin-top: 0.225rem; margin-bottom: 100px;"">
+        <h4 class=" text-light">PDFs</h4>
+    <div class="container px-4 px-lg-5 mt-1">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for a in instructor_post_pdf1 %}
+            <style>
+                .card {
+                    transition: 0.3s;
+                }
+
+                .card:hover {
+                    box-shadow: 0 10px 20px rgba(156, 156, 156, 0.285), 0 6px 6px rgba(151, 145, 93, 0.512);
+                    transform: translateY(-7px);
+                }
+            </style>
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <!-- <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." /> -->
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{ a.title }}</h5>
+                            <!-- Product price-->
+                            {{ a.content }} <br>
+                            {{ a.about }}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <a class="btn btn-outline-dark mt-auto"
+                                href="/{{branch.url}}/{{semester.url}}/courses/{{course.url}}/instructor/{{instructor.url}}/{{instructor.id}}/pdf/{{a.url}}">Visit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
     </div>
-  </div>
+    <hr style="color: aliceblue;">
+    <h4 class=" text-light">Extra Material</h4>
+    <div class="container px-4 px-lg-5 mt-1">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for a in instructor_post_text1 %}
+            <style>
+                .card {
+                    transition: 0.3s;
+                }
+
+                .card:hover {
+                    box-shadow: 0 10px 20px rgba(156, 156, 156, 0.285), 0 6px 6px rgba(151, 145, 93, 0.512);
+                    transform: translateY(-7px);
+                }
+            </style>
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <!-- <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." /> -->
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{ a.title }}</h5>
+                            <!-- Product price-->
+                            {{ a.content }} <br>
+                            {{ a.about }}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <a class="btn btn-outline-dark mt-auto"
+                                href="/{{branch.url}}/{{semester.url}}/courses/{{course.url}}/instructor/{{instructor.url}}/{{instructor.id}}/post/{{a.url}}">Visit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
 
 
-
-<h1>instructor_post_pdf</h1>
-{% for a in instructor_post_pdf %}
-
-{{a.title}} <br>
-{{a.content}} <br>
-<a href="/branch/courses/instructor/pdfs/{{a.url}}">link to pdf</a>
-
-{% endfor %}
+        </div>
+    </div>
+</section>
 
 
-<hr>
-<h1>
-    instructor_post_text
-</h1>
-{% for a in instructor_post_text %}
+<section class="py-2">
+    <div class="container">
+        <!-- embed things -->
+    </div>
+</section>
 
-{{a.title}} <br>
-{{a.content}}
-<a href="/branch/courses/instructor/post/{{a.url}}">link to post</a>
+<!-- <section class="mb-3">
 
-{% endfor %}
+    </section> -->
 
-<p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat maxime molestiae quae magni unde accusantium sit provident hic dolorem et, harum, ipsam consequuntur deleniti velit? Animi quod error voluptates, impedit itaque tempora iure. Placeat vero asperiores culpa nemo ut, magnam quia neque maiores doloremque quo molestias non facere commodi aperiam illo dolorem quod numquam sint eos voluptas! Inventore facilis sunt, sed nobis labore dolore autem accusantium adipisci voluptates quibusdam? Eligendi vel, numquam reiciendis corporis praesentium autem. Corrupti dolor similique ipsam harum impedit repudiandae cumque fugiat voluptatum iusto accusamus, culpa quisquam, ullam modi ratione est? Numquam minus, libero quo fugit quos nulla consequatur dicta cum quibusdam dolores consequuntur eius facere, ea ratione! Soluta, blanditiis! Voluptate numquam minima voluptates explicabo ducimus dolores velit atque!icing elit. Fugiat maxime molestiae quae magni unde accusantium sit provident hic dolorem et, harum, ipsam consequuntur deleniti velit? Animi quod error voluptates, impedit itaque tempora iure. Placeat vero asperiores culpa nemo ut, magnam quia neque maiores doloremque quo molestias non facere commodi aperiam illo dolorem quod numquam sint eos voluptas! Inventore facilis sunt, sed nobis labore dolore autem accusantium adipisci voluptates quibusdam? Eligendi vel, numquam reiciendis corporis praesentium autem. Corrupti dolor similique ipsam harum impedit repudiandae cumque fugiat voluptatum iusto accusamus, culpa quisquam, ullam modi ratione est? Numquam minus, libero quo fugit quos nulla consequatur dicta cum quibusdam dolores consequuntur eius facere, ea ratione! Soluta, blanditiis! Voluptate numquam minima voluptates explicabo ducimus dolores velit atque!icing elit. Fugiat maxime molestiae quae magni unde accusantium sit provident hic dolorem et, harum, ipsam consequuntur deleniti velit? Animi quod error voluptates, impedit itaque tempora iure. Placeat vero asperiores culpa nemo ut, magnam quia neque maiores doloremque quo molestias non facere commodi aperiam illo dolorem quod numquam sint eos voluptas! Inventore facilis sunt, sed nobis labore dolore autem accusantium adipisci voluptates quibusdam? Eligendi vel, numquam reiciendis corporis praesentium autem. Corrupti dolor similique ipsam harum impedit repudiandae cumque fugiat voluptatum iusto accusamus, culpa quisquam, ullam modi ratione est? Numquam minus, libero quo fugit quos nulla consequatur dicta cum quibusdam dolores consequuntur eius facere, ea ratione! Soluta, blanditiis! Voluptate numquam minima voluptates explicabo ducimus dolores velit atque!icing elit. Fugiat maxime molestiae quae magni unde accusantium sit provident hic dolorem et, harum, ipsam consequuntur deleniti velit? Animi quod error voluptates, impedit itaque tempora iure. Placeat vero asperiores culpa nemo ut, magnam quia neque maiores doloremque quo molestias non facere commodi aperiam illo dolorem quod numquam sint eos voluptas! Inventore facilis sunt, sed nobis labore dolore autem accusantium adipisci voluptates quibusdam? Eligendi vel, numquam reiciendis corporis praesentium autem. Corrupti dolor similique ipsam harum impedit repudiandae cumque fugiat voluptatum iusto accusamus, culpa quisquam, ullam modi ratione est? Numquam minus, libero quo fugit quos nulla consequatur dicta cum quibusdam dolores consequuntur eius facere, ea ratione! Soluta, blanditiis! Voluptate numquam minima voluptates explicabo ducimus dolores velit atque!icing elit. Fugiat maxime molestiae quae magni unde accusantium sit provident hic dolorem et, harum, ipsam consequuntur deleniti velit? Animi quod error voluptates, impedit itaque tempora iure. Placeat vero asperiores culpa nemo ut, magnam quia neque maiores doloremque quo molestias non facere commodi aperiam illo dolorem quod numquam sint eos voluptas! Inventore facilis sunt, sed nobis labore dolore autem accusantium adipisci voluptates quibusdam? Eligendi vel, numquam reiciendis corporis praesentium autem. Corrupti dolor similique ipsam harum impedit repudiandae cumque fugiat voluptatum iusto accusamus, culpa quisquam, ullam modi ratione est? Numquam minus, libero quo fugit quos nulla consequatur dicta cum quibusdam dolores consequuntur eius facere, ea ratione! Soluta, blanditiis! Voluptate numquam minima voluptates explicabo ducimus dolores velit atque!icing elit. Fugiat maxime molestiae quae magni unde accusantium sit provident hic dolorem et, harum, ipsam consequuntur deleniti velit? Animi quod error voluptates, impedit itaque tempora iure. Placeat vero asperiores culpa nemo ut, magnam quia neque maiores doloremque quo molestias non facere commodi aperiam illo dolorem quod numquam sint eos voluptas! Inventore facilis sunt, sed nobis labore dolore autem accusantium adipisci voluptates quibusdam? Eligendi vel, numquam reiciendis corporis praesentium autem. Corrupti dolor similique ipsam harum impedit repudiandae cumque fugiat voluptatum iusto accusamus, culpa quisquam, ullam modi ratione est? Numquam minus, libero quo fugit quos nulla consequatur dicta cum quibusdam dolores consequuntur eius facere, ea ratione! Soluta, blanditiis! Voluptate numquam minima voluptates explicabo ducimus dolores velit atque!icing elit. Fugiat maxime molestiae quae magni unde accusantium sit provident hic dolorem et, harum, ipsam consequuntur deleniti velit? Animi quod error voluptates, impedit itaque tempora iure. Placeat vero asperiores culpa nemo ut, magnam quia neque maiores doloremque quo molestias non facere commodi aperiam illo dolorem quod numquam sint eos voluptas! Inventore facilis sunt, sed nobis labore dolore autem accusantium adipisci voluptates quibusdam? Eligendi vel, numquam reiciendis corporis praesentium autem. Corrupti dolor similique ipsam harum impedit repudiandae cumque fugiat voluptatum iusto accusamus, culpa quisquam, ullam modi ratione est? Numquam minus, libero quo fugit quos nulla consequatur dicta cum quibusdam dolores consequuntur eius facere, ea ratione! Soluta, blanditiis! Voluptate numquam minima voluptates explicabo ducimus dolores velit atque!icing elit. Fugiat maxime molestiae quae magni unde accusantium sit provident hic dolorem et, harum, ipsam consequuntur deleniti velit? Animi quod error voluptates, impedit itaque tempora iure. Placeat vero asperiores culpa nemo ut, magnam quia neque maiores doloremque quo molestias non facere commodi aperiam illo dolorem quod numquam sint eos voluptas! Inventore facilis sunt, sed nobis labore dolore autem accusantium adipisci voluptates quibusdam? Eligendi vel, numquam reiciendis corporis praesentium autem. Corrupti dolor similique ipsam harum impedit repudiandae cumque fu
-    </p>
 
+<!-- <object style="height: 390px; width: 640px"><param name="movie" value="http://www.youtube.com/v/v1gTI4BOPUw?version=3"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><embed src="http://www.youtube.com/v/v1gTI4BOPUw?version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="640" height="390"></object> -->
 {% endblock %}
+
+
+

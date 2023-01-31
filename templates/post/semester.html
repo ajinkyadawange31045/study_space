@@ -4,34 +4,52 @@
 <style>
   .ard {
       background-color: black;
-      height: 55vh;
+      height: 15rem;
       width: 100vw;
-      margin-bottom: 14px;
+      margin-bottom: -4px;
   }
 </style>
 
-<div class="home ard">
+{% comment %} <div class="home ard">
   <div class="home_content">
-      <div class="post_title">Branch : {{ branch.name }}</div>
       
-  </div>
-</div>
+    </div>
+  </div> {% endcomment %}
+  <hr class="bg-light">
 
-  <div class="container mb-5">
-
+  <div class="container mb-2 text-center" style="margin-top: 135px; margin-bottom: 100px;">
+    <div class="post_title">Branch : {{ branch.name }}</div>
+    <div class="post_title">Semesters</div>
     <div class="container pt-5">
       {% for sem in semesters %}
-        <button class="btn btn-primary m-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{ forloop.counter }}" data-bs-target-group="#collapseExample{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseExample{{ forloop.counter }}">{{ sem.name }}</button>
+      <button class="btn btn-light w-75 m-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{ forloop.counter }}" data-bs-target-group="#collapseExample{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseExample{{ forloop.counter }}">{{ sem.name }}</button>
 
-        <div class="collapse container px-4 px-lg-5 text-center border mt-2" id="collapseExample{{ forloop.counter }}">
-          <h6 class="mt-2 pt-2 text-danger">{{ sem.name }}</h6>
+      <style>
+        .btn-light {
+          background-color: white;
+          color: black;
+          border-radius: 25px;
+          border: 1px solid black;
+          transition: box-shadow 0.3s ease-in-out;
+        }
+        
+        .btn-light:hover {
+          box-shadow: 0px 0px 5px 1px white;
+          color: orangered;
+          border-radius: 25px;
+        }
+      </style>
+      
+
+        <div class="collapse container px-4 px-lg-5 text-center border border-secondary mt-2" id="collapseExample{{ forloop.counter }}">
+          <h6 class="mt-2 pt-2 text-success">{{ sem.name }}</h6>
           <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             {% for course in sem.course_set.all %}
-              <div class="card text-center col mb-5 m-2">
+              <div class="card text-center col mb-3 m-2">
                 <div class="card-body" style="overflow: auto;">
                   <h5 class="card-title">{{ course.title }}</h5>
                   <p class="card-text">Views: {{ course.views }}</p>
-                  <a href="/branch/courses/{{course.url}}" class="btn btn-primary">Visit course</a>
+                  <a href="/{{branch.url}}/{{sem.url}}/courses/{{course.url}}" class="btn btn-primary">Visit course</a>
                 </div>
               </div>
             {% endfor %}

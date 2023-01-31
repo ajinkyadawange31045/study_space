@@ -3,7 +3,7 @@
 
 <!-- Masthead-->
 <div class="home text-center">
-    <section class="showcase text-center">
+    <section class="showcase text-center justify-content-center ">
         <!-- <video src="{% static 'video/b_video1.mp4' %}" muted loop autoplay type="video/mp4"></video> -->
         <!-- <img src="{% static 'assets/img/CVR-Slide-1.jpg' %}" alt="" > -->
         <div class="overlay"></div>
@@ -91,23 +91,21 @@
         </div>
         <div class="row">
 
-            {% for b in branch %}
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <!-- Portfolio item 1-->
-                <div class="portfolio-item">
-                   <a class="portfolio-link" href="/branch/{{b.url}}">
-
-                       
-                        <!-- <img class="img-fluid" src="{% static 'assets/img/portfolio/1.jpg' %}" alt="..." /> -->
-                    
-                    <div class="portfolio-caption text-center">
-                        <div class="portfolio-caption-heading text-light h5 " style="text-decoration: underline;">{{b.name}}</div>
-                        <div class="portfolio-caption-subheading text-muted"  style="color: white;">{{b.content}}</div>
+            <div class="container px-4 px-lg-5 text-center mt-2">
+                <h6 class="mt-2 pt-2 text-danger">{{ sem.name }}</h6>
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-evenly">
+                    {% for b in branch %}
+                    <div class="card text-center col mb-3 m-2">
+                      <div class="card-body" style="overflow: auto;">
+                        <h5 class="card-title">{{ b.name }}</h5>
+                        <p class="card-text">{{ b.content }}</p>
+                        <a href="/branch/{{b.url}}" class="btn btn-primary">Visit branch</a>
+                      </div>
                     </div>
-                </a>
+                  {% endfor %}
                 </div>
-            </div>
-            {% endfor %}            
+              </div>
+
         </div>
     </div>
 </section>
