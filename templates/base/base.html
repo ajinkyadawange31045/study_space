@@ -44,6 +44,11 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style_base.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style_branch.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <style>
+        body{
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
     {% include "base/navbar.html" %}
@@ -59,6 +64,7 @@
     <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
     
+    <script src="{% static 'js/bundle.min.js' %}"></script>
     <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>

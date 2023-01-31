@@ -1,46 +1,61 @@
 {% extends "base/base.html" %}{% block content %}
-
-<div class="container">
-    <h2 class="mt-5 text-center justify-content-center">{{course.title}}</h2><br>
+<style>
+    .ard {
+        background-color: black;
+        height: 55vh;
+        width: 100vw;
+        margin-bottom: 14px;
+    }
+  </style>
+  
+  <div class="home ard">
+    <div class="home_content">
+        <div class="post_title">Course : {{course.title}}</div>
+        
+    </div>
+  </div>
+    <section class="py-2">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {% for instructor in inc %}
+                <div class="col mb-5">
     
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <!-- <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." /> -->
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{ instructor.name }}</h5>
+                                <!-- Product price-->
+                                {{ instructor.course_taken_in_year }} <br>
+                                {{ instructor.about }}
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'instructor_view' instructor.url  %}">Visit</a></div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+           
+            </div>
+        </div>
+    </section>
+
+
     <section class="py-2">
         <div class="container">
             <!-- embed things -->
         </div>
     </section>
 
+    <!-- <section class="mb-3">
 
-    <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            {% for instructor in inc %}
-            <div class="col mb-5">
+    </section> -->
 
-                <div class="card h-100">
-                    <!-- Product image-->
-                    <!-- <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." /> -->
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">{{ instructor.name }}</h5>
-                            <!-- Product price-->
-                            {{ instructor.course_taken_in_year }} <br>
-                            {{ instructor.about }}
-                        </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'instructor_view' instructor.url  %}">Visit</a></div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-       
-        </div>
-    </div>
-</section>
-</div>
 
 <!-- <object style="height: 390px; width: 640px"><param name="movie" value="http://www.youtube.com/v/v1gTI4BOPUw?version=3"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><embed src="http://www.youtube.com/v/v1gTI4BOPUw?version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="640" height="390"></object> -->
 {% endblock %}
