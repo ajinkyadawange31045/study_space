@@ -73,7 +73,8 @@ class Instructor_post_text(models.Model):
     instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE)
     title = models.CharField( blank=True, max_length=255)
     url = models.CharField(max_length=100)
-    image = models.ImageField(blank=True)
+    # image = models.ImageField(blank=True)
+    image = models.ImageField(upload_to='image_for_post/', blank=True)
     content = models.TextField(blank=True)
     
     def __str__(self):

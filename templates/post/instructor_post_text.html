@@ -1,25 +1,52 @@
 {% extends "base/base.html" %}{% block content %}
 
-
-<style>
-    .ard {
-        background-color: black;
-        height: 55vh;
-        width: 100vw;
-        margin-bottom: 14px;
-    }
-  </style>
-  
-  <div class="home ard">
-    <div class="home_content">
-        <div class="post_title">Course : {{course.title}}</div>
-        
-    </div>
+{% comment %} <header class="bg-dark py-5">
+  <div class="container px-5">
+      <div class="row gx-5 justify-content-center">
+          <div class="col-lg-6">
+              <div class="text-center my-5">
+                  <h1 class="display-5 fw-bolder text-white mb-2">Present your business in a whole new way</h1>
+                  <p class="lead text-white-50 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p>
+                  <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                      <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
+                      <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, est possimus quidem fugit tempore optio cum accusamus nostrum enim explicabo aliquid sed, reiciendis doloribus natus architecto assumenda obcaecati culpa. Adipisci!
+</header> {% endcomment %}
 
-    br
-    <hr><hr>hi this i sajinkya, in text page
-</p>
+
+
+<section class="py-5 border-bottom">
+  <div class="container px-5 my-5 px-5">
+      <div class="text-center mb-5">
+          <h2 class="fw-bolder text-light">{{instructor_post_text1.title}}</h2>
+          <h5 class="fw-bolder text-light">{{course.title}} - {{instructor.name}}</h5>
+          {% comment %} <p class="lead mb-0">Our customers love working with us</p> {% endcomment %}
+      </div>
+      <div class="row gx-5 justify-content-around">
+          <div class="col-lg-12">
+              <!-- Testimonial 1-->
+              <div class="card mb-4">
+                  <div class="card-body p-2">
+                      <div class="d-flex">
+                          <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i></div>
+                          <div class="ms-4">
+                            
+                              <img src="/media/{{instructor_post_text1.image}}" alt="Image" width="100%" height="auto">
+                              <br><br>
+                              <p class="mb-1 text-dark justify-content-around">{{instructor_post_text1.content}}</p>
+                              <div class="small text-muted">Thankyou, I hope it helped.</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- Testimonial 2-->
+              
+          </div>
+      </div>
+  </div>
+</section>
 {% endblock %}
