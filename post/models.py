@@ -61,9 +61,9 @@ class Instructor(models.Model):
 
 class Instructor_post_pdf(models.Model):
     instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE)
-    title = models.CharField(blank=True, max_length=644)
+    title = models.CharField(blank=True, max_length=144)
     url = models.CharField(max_length=100)
-    content = models.TextField(blank=True)
+    content = models.TextField(blank=True,max_length=100)
     pdf_link = models.CharField(max_length=1000,blank=True)
     def __str__(self):
         return self.title
