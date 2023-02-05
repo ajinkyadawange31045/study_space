@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'taggit',
     'teacher_rating',
     'embed_video',
-    
     'crispy_forms',
 ]
 

@@ -1,16 +1,16 @@
 # from django.shortcuts import render, redirect
-from .forms import ProfileForm
+    # from .forms import ProfileForm
 
-def edit_profile(request, pk):
-    profile = Profile.objects.get(pk=pk)
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
-            return redirect('profile')
-    else:
-        form = ProfileForm(instance=profile)
-    return render(request, 'regi/edit_profile.html', {'form': form})
+    # def edit_profile(request, pk):
+    #     profile = Profile.objects.get(pk=pk)
+    #     if request.method == 'POST':
+    #         form = ProfileForm(request.POST, instance=profile)
+    #         if form.is_valid():
+    #             form.save()
+    #             return redirect('profile')
+    #     else:
+    #         form = ProfileForm(instance=profile)
+    #     return render(request, 'regi/edit_profile.html', {'form': form})
 
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect,HttpResponsePermanentRedirect, redirect
