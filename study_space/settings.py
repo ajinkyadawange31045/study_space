@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'taggit',
     'teacher_rating',
     'embed_video',
+    
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -85,6 +87,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'study_space.wsgi.application'
+
+# settings.py
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 # Database

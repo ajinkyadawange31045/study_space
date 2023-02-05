@@ -1,6 +1,15 @@
 {% extends "base/base.html" %}{% block title %}Home page {% endblock %}
 {% block content %}{% load static %}
+<style>
+    .card {
+        transition: 0.3s;
+    }
 
+    .card:hover {
+        box-shadow: 0 10px 20px rgba(156, 156, 156, 0.285), 0 6px 6px rgba(151, 145, 93, 0.512);
+        transform: translateY(-7px);
+    }
+</style>
 <!-- Masthead-->
 <div class="home text-center">
     <section class="showcase text-center justify-content-center ">
