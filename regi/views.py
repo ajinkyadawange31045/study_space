@@ -1,22 +1,9 @@
-# from django.shortcuts import render, redirect
-    # from .forms import ProfileForm
-
-    # def edit_profile(request, pk):
-    #     profile = Profile.objects.get(pk=pk)
-    #     if request.method == 'POST':
-    #         form = ProfileForm(request.POST, instance=profile)
-    #         if form.is_valid():
-    #             form.save()
-    #             return redirect('profile')
-    #     else:
-    #         form = ProfileForm(instance=profile)
-    #     return render(request, 'regi/edit_profile.html', {'form': form})
-
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect,HttpResponsePermanentRedirect, redirect
 from django.contrib.auth.forms import UserCreationForm
 # from .forms import SignUpForm, LoginForm, PostForm
-from .forms import SignUpForm, LoginForm,EditUserProfileForm
+# from .forms import SignUpForm, LoginForm,EditUserProfileForm
+from .forms import SignUpForm, LoginForm
 from django.contrib import messages
 from django.contrib.auth import  authenticate,login,logout
 from django import forms
@@ -33,7 +20,19 @@ from django.contrib.auth import authenticate, login, logout,update_session_auth_
 from django.contrib.auth.decorators import login_required
 # import time
 # Create your views here.
+from .forms import SignUpForm, UserForm, ProfileForm
+from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
+from django.contrib import messages
+from .models import Profile
+from django.views.generic import TemplateView, CreateView
 
+from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
+from django.contrib import messages
+from .forms import UserForm, ProfileForm
+from django.contrib.auth.models import User
 #logout________________________________________________________________________________________________
 def user_logout(request):
     logout(request)
@@ -45,7 +44,7 @@ def user_logout(request):
 def user_login(request):
     if not request.user.is_authenticated:
         if request.method == "POST":
-            form = LoginForm(request =request,data=request.POST)
+            form = LoginForm(request = request,data=request.POST)
             if form.is_valid():
                 uname = form.cleaned_data['username']
                 upass = form.cleaned_data['password']
@@ -113,3 +112,38 @@ def user_change_pass(request):
         return render(request,'regi/change_pass.html',{'form':fm})
     else:
         return HttpResponseRedirect('/login/')
+
+
+
+
+class ProfileView(LoginRequiredMixin, TemplateView):
+    template_name = 'regi/profile.html'
+
+class ProfileUpdateView(LoginRequiredMixin, TemplateView):
+    user_form = UserForm
+    profile_form = ProfileForm
+    template_name = 'regi/profile-update.html'
+
+    def post(self, request):
+
+        post_data = request.POST or None
+        file_data = request.FILES or None
+
+        user_form = UserForm(post_data, instance=request.user)
+        profile_form = ProfileForm(post_data, file_data, instance=request.user.profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile was successfully updated!')
+            return HttpResponseRedirect(reverse_lazy('profile'))
+
+        context = self.get_context_data(
+                                        user_form=user_form,
+                                        profile_form=profile_form
+                                    )
+
+        return self.render_to_response(context)     
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)

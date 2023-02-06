@@ -2,11 +2,13 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm,UsernameField,UserChangeForm
 from django.contrib.auth.models import User
 from django.utils.translation import gettext, gettext_lazy as _
+from .models import Profile
+
 # from mptt.forms import TreeNodeChoiceField
 
 class SignUpForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}), help_text='Optional')
-    last_name = forms.CharField(max_length=30, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}), help_text='Optional')
+    first_name = forms.CharField(max_length=30, required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'style': 'color: black; font-weight: bold;'}), help_text='Optional')
+    last_name = forms.CharField(max_length=30, required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'style': 'font-weight: bold;'}), help_text='Optional')
     email = forms.EmailField(max_length=254, widget=forms.EmailInput(attrs={'class': 'form-control'}), help_text='Enter a valid email address')
 
     password1 = forms.CharField(label='Password',widget=forms.PasswordInput(attrs={'class':'form-control'}))
@@ -14,12 +16,15 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username','first_name','last_name','email']
-        labels = {'first_name':'First Name','last_name':'Last Name','email':'Email'}
+        labels = {'first_name':'<strong>First Name</strong>','last_name':'<strong>Last Name</strong>','email':'<strong>Email</strong>'}
+
         widgets = {'username':forms.TextInput(attrs={'class':'form-control'}),
-        'first_name':forms.TextInput(attrs={'class':'form-control'}),
-        'last_name':forms.TextInput(attrs={'class':'form-control'}),
+        'first_name':forms.TextInput(attrs={'class':'form-control', 'style': 'font-weight: bold;'}),
+        'last_name':forms.TextInput(attrs={'class':'form-control', 'style': 'font-weight: bold;'}),
         'email':forms.EmailInput(attrs={  'type':"email",'id':"form3Example3@nitk.edu.in",'class':'form-control'}),
         }
+
+
 
 class LoginForm(AuthenticationForm):
     # <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
@@ -35,10 +40,31 @@ class LoginForm(AuthenticationForm):
     )
 
 # Edit user
-class EditUserProfileForm(UserChangeForm):
-    password = None
-    # last_login = None
+# class EditUserProfileForm(UserChangeForm):
+#     password = None
+#     # last_login = None
+#     class Meta:
+#         model = User
+#         fields = ['username','first_name','last_name'] 
+#         lables = {'email':'Email'}
+
+
+class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username','first_name','last_name'] 
-        lables = {'email':'Email'}
+        fields = [
+            'username', 
+            'first_name', 
+            'last_name', 
+            'email', 
+        ]
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = [
+            'bio',
+            'phone_number',
+            'birth_date',
+            'profile_image'
+        ]
