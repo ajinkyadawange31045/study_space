@@ -1,0 +1,81 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h1>Meme List</h1>
+<style>
+    /* Add styles for the list page here */
+    .meme {
+        width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f2f2f2;
+    }
+    .meme h2 {
+        margin-top: 0;
+    }
+    .meme img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .meme p {
+        margin-bottom: 20px;
+    }
+
+        .comment-section {
+          margin-top: 20px;
+        }
+        .comment {
+          border: 1px solid black;
+          padding: 10px;
+          margin-bottom: 10px;
+        }
+ 
+
+</style>
+<div class="meme-list">
+    
+    {% for meme in object_list %}
+      <div class="meme">
+        <a href="{% url 'meme_upload' %}">Upload Meme</a>
+        <h2>{{ meme.title }}</h2>
+        <p>{{ meme.content }}</p>
+        <img src="{{ meme.photo.url }}" alt="{{ meme.title }}">
+  
+        <div class="meme-actions">
+          <i class="fa fa-thumbs-up"></i> {{ meme.likes }} 
+          <i class="fa fa-thumbs-down"></i> {{ meme.dislikes }} 
+          <i class="fa fa-share-square"></i> {{ meme.shares }} 
+          <i class="fa fa-comments"></i> {{ meme.comments.count }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  
+
+  <div class="comment-section">
+    <h3>Add Comment</h3>
+    <form onsubmit="submitComment(); return false;">
+      <textarea id="comment-input"></textarea><br>
+      <button type="submit">Submit Comment</button>
+    </form>
+    <div id="comments-container">
+      <!-- Comments will be added here dynamically -->
+    </div>
+  </div>
+
+  <script>
+    function submitComment() {
+      const commentInput = document.getElementById("comment-input");
+      const comment = commentInput.value;
+      commentInput.value = "";
+
+      const commentsContainer = document.getElementById("comments-container");
+      const newComment = document.createElement("div");
+      newComment.classList.add("comment");
+      newComment.innerHTML = comment;
+      commentsContainer.appendChild(newComment);
+    }
+  </script>
+{% endblock %}
+
+
