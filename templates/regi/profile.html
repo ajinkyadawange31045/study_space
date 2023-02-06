@@ -105,23 +105,12 @@
 </div>{% endcomment %}
 
 
-
-
-
-
-
-
-
-
-
-
-
 <style>
     body{
-        margin-top:20px;
+        margin-top:5rem;
         color: #1a202c;
         text-align: left;
-        background-color: #e2e8f0;    
+        background-color: black;    
     }
     .main-body {
         padding: 15px;
@@ -182,23 +171,30 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <img src="{{user.profile.profile_image.url}}" class="rounded float-right" width="150">
+                    {% comment %} <img src="{{user.profile.profile_image.url}}" class="rounded float-right" height="300px" width="300px"> {% endcomment %}
+                    {% comment %} <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150"> {% endcomment %}
                     <div class="mt-3">
-                      <h4>{{name}}</h4>
+                      <h4>{{user.username}} </h4>
+                      <p> {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
+                        {% endfor %}
+                      {% endif %}</p>
                       <p class="text-secondary mb-1">Full Stack Developer</p>
                       <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                       <p class="pt-3 text-info">
-                        Want to contribute to Study Space by writing Blogs?
+                        Want to contribute to Study Space by submitting Material (including question papers and other stuffs)?
                     </p>
                     <p class=" text-success ">Don't forget to mention WhatsApp Number in message</p>
                     <p>
-                        <a href="/#contact"><button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Contact us</button></a>
+                        <a href="/#contact"><button class="btn btn-sm btn-primary shadow-sm" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Contact us</button></a>
 
                     </p>
-                    <p class=" text-dark">Date Joined <br> {{name.date_joined}}</p>
-                    <p class=" text-dark">last login <br> {{name.last_login}}</p>
-                      <button class="btn btn-primary">Follow</button>
-                      <button class="btn btn-outline-primary">Message</button>
+                    <p class=" text-dark">Date Joined <br> {{user.date_joined}}</p>
+                    <p class=" text-dark">last login <br> {{user.last_login}}</p>
+                      {% comment %} <button class="btn btn-primary">Follow</button>
+                      <button class="btn btn-outline-primary">Message</button> {% endcomment %}
                     </div>
                   </div>
                 </div>
@@ -236,7 +232,7 @@
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Kenneth Valdez
+                      {{user.first_name}} {{user.last_name}}
                     </div>
                   </div>
                   <hr>
@@ -245,16 +241,16 @@
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      fip@jukmuh.al
+                      {{user.email}}
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Phone</h6>
+                      <h6 class="mb-0">DOB</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      (239) 816-9029
+                      {{user.profile.birth_date}}
                     </div>
                   </div>
                   <hr>
@@ -263,22 +259,23 @@
                       <h6 class="mb-0">Mobile</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      (320) 380-4539
+                      {{user.profile.phone_number}}
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Address</h6>
+                      <h6 class="mb-0">Bio</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Bay Area, San Francisco, CA
+                      {{user.profile.bio}}
                     </div>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                      {% comment %} <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a> {% endcomment %}
+                      <a  href="{% url 'profile-update' %}" class="btn btn-sm btn-primary shadow-sm">Edit</a>
                     </div>
                   </div>
                 </div>

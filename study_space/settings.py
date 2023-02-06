@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'teacher_rating',
     'embed_video',
     'crispy_forms',
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [

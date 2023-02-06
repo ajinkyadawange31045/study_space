@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Profile
+from .models import Profile,User
 
-# class ProfileAdmin(admin.ModelAdmin):
-#     list_display = ('username', 'name', 'email', 'phone_number', 'branch', 'semester')
-#     search_fields = ('username', 'name', 'email')
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user','phone_number', 'branch', 'semester')
+    search_fields = ('username',)
 
-# admin.site.register(Profile, ProfileAdmin)
-admin.site.register(Profile)
+admin.site.register(Profile, ProfileAdmin)
+# admin.site.register(Profile)

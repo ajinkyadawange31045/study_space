@@ -24,7 +24,7 @@ from .forms import SignUpForm, UserForm, ProfileForm
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from .models import Profile
+from .models import Profile, User
 from django.views.generic import TemplateView, CreateView
 
 from django.http import HttpResponseRedirect
@@ -33,6 +33,8 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from .forms import UserForm, ProfileForm
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+
 #logout________________________________________________________________________________________________
 def user_logout(request):
     logout(request)
@@ -83,19 +85,19 @@ def user_signup(request):
     
     
 # user profile________________________________________________________________________________________________
-def user_profile(request):\
+# def user_profile(request):\
     
-    if request.user.is_authenticated:
-        if request.method == "POST":
-            fm  = EditUserProfileForm(request.POST, instance = request.user)
-            if fm.is_valid():
-                messages.success(request,'Profile has been updated')
-                fm.save()
-        else:
-            fm = EditUserProfileForm(instance= request.user)
-        return render(request,'regi/profile.html',{'name':request.user,'form':fm})
-    else:
-        return HttpResponseRedirect('/login/')
+#     if request.user.is_authenticated:
+#         if request.method == "POST":
+#             fm  = EditUserProfileForm(request.POST, instance = request.user)
+#             if fm.is_valid():
+#                 messages.success(request,'Profile has been updated')
+#                 fm.save()
+#         else:
+#             fm = EditUserProfileForm(instance= request.user)
+#         return render(request,'regi/profile.html',{'name':request.user,'form':fm})
+#     else:
+#         return HttpResponseRedirect('/login/')
 
 # change password________________________________________________________________________________________________
 def user_change_pass(request):
