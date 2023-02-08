@@ -21,6 +21,7 @@ urlpatterns = [
     path('',include('post.urls')),
     path('',include('regi.urls')),
     path('',include('memes.urls')),
+    path('',include('discussion_forum.urls')),
 ]
 from django.conf import settings
 from django.conf.urls.static import static

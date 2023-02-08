@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'embed_video',
     'crispy_forms',
     'django_cleanup',
+    'discussion_forum',
 ]
 
 MIDDLEWARE = [
