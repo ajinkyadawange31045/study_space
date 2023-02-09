@@ -21,8 +21,10 @@ class Profile(models.Model):
     semester = models.IntegerField(null=True, blank=True)
     profile_image = models.ImageField(default = 'user.jpg',upload_to='users/',null = True,blank=True)
     
+    # def __str__(self):
+    #     return '%s %s' % (self.user.first_name,self.user.last_name)
     def __str__(self):
-        return '%s %s' % (self.user.first_name,self.user.last_name)
+        return f'{self.user.username} Profile'
     
 
 @receiver(post_save, sender=User)
