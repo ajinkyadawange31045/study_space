@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('post.urls')),
     path('',include('regi.urls')),
-    path('',include('memes.urls')),
+    # path('',include('memes.urls')),
     # path('',include('discussion_forum.urls')),
     path('',include('forum.urls')),
 ]
